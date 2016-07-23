@@ -21626,12 +21626,16 @@
 	    null,
 	    _react2.default.createElement(
 	      'button',
-	      { onClick: addPiano(newPianoType) },
+	      { onClick: function onClick() {
+	          addPiano(newPianoType);
+	        } },
 	      'add piano'
 	    ),
 	    _react2.default.createElement(
 	      'button',
-	      { onClick: removePiano() },
+	      { onClick: function onClick() {
+	          removePiano();
+	        } },
 	      'remove piano'
 	    ),
 	    _react2.default.createElement(
@@ -21639,17 +21643,23 @@
 	      { className: 'dropdown-menu' },
 	      _react2.default.createElement(
 	        'li',
-	        { onClick: changeType('necktieMode') },
+	        { onClick: function onClick() {
+	            changeType('necktieMode');
+	          } },
 	        'NeckTie'
 	      ),
 	      _react2.default.createElement(
 	        'li',
-	        { onClick: changeType('pianoMode') },
+	        { onClick: function onClick() {
+	            changeType('pianoMode');
+	          } },
 	        'Piano'
 	      ),
 	      _react2.default.createElement(
 	        'li',
-	        { onClick: changeType('sillyMode') },
+	        { onClick: function onClick() {
+	            changeType('sillyMode');
+	          } },
 	        'Mugatu\'s Silly Mode'
 	      )
 	    ),
@@ -21691,7 +21701,7 @@
 	  var addToPlayedKeys = _ref.addToPlayedKeys;
 
 	  var pianoArray = pianos.map(function (piano) {
-	    return _react2.default.createElement(_piano2.default, { piano: piano, changeColor: changeColor, playSequence: playSequence, addToPlayedKeys: addToPlayedKeys });
+	    _react2.default.createElement(_piano2.default, { key: piano.id, piano: piano, changeColor: changeColor, playSequence: playSequence, addToPlayedKeys: addToPlayedKeys });
 	  });
 	  return _react2.default.createElement(
 	    'div',
@@ -21747,8 +21757,7 @@
 	                              null,
 	                              'Played Keys:',
 	                              piano.playedKeys
-	                    ),
-	                    _react2.default.createElement(_Input2.default, { playSequence: playSequence })
+	                    )
 	          );
 	};
 
@@ -21949,10 +21958,11 @@
 	  newPianoType: 'necktieMode'
 	};
 
-	function pianos() {
+	var pianos = function pianos() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? initalState : arguments[0];
 	  var action = arguments[1];
 
+	  console.log(state);
 	  switch (action.type) {
 	    case _index.ADD_PIANO:
 	      return Object.assign({}, state, {
@@ -21961,7 +21971,7 @@
 	    case _index.REMOVE_PIANO:
 	      pianoId--;
 	      return Object.assign({}, state, {
-	        pianos: state.slice(0, state.pianos.length - 1)
+	        pianos: state.pianos.slice(0, state.pianos.length - 1)
 	      });
 	    case _index.CHANGE_TYPE:
 	      return Object.assign({}, state, {
@@ -21971,7 +21981,7 @@
 	      var index = (0, _utils.findPianoIndex)(state.pianos, action.pianoIndex);
 	      var key = action.keyToChange;
 	      return Object.assign({}, state, {
-	        pianos: [].concat(_toConsumableArray(state.pianos(0, index)), [Object.assign({}, state.pianos[index], {
+	        pianos: [].concat(_toConsumableArray(state.pianos.slice(0, index)), [Object.assign({}, state.pianos[index], {
 	          key: (0, _utils.colorChangeUtil)(state.pianos[index][key])
 	        })], _toConsumableArray(state.pianos.slice(index + 1)))
 	      });
@@ -21989,8 +21999,10 @@
 	          playedKeys: [].concat(_toConsumableArray(state.pianos[indexPlyd].playedKeys), [action.playedKey])
 	        })], _toConsumableArray(state.pianos.slice(indexPlyd + 1)))
 	      });
+	    default:
+	      return state;
 	  }
-	}
+	};
 
 	var store = (0, _redux.createStore)(pianos);
 

@@ -9,7 +9,6 @@ const Piano = ({ piano, changeColor, playSequence, addToPlayedKeys }) => {
             <Keys piano={piano} changeColor={changeColor} addToPlayedKeys={addToPlayedKeys} />
             <img src={piano.img} />
             <div>Played Keys:{piano.playedKeys}</div>
-            <Input playSequence={playSequence} />
           </div>)
 }
 

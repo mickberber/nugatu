@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { ADD_PIANO, REMOVE_PIANO, CHANGE_TYPE, CHANGE_COLOR, PLAY_SEQUENCE, ADD_TO_PLAYED_KEYS } from '../actions/index.js';
+import { ADD_PIANO, REMOVE_PIANO, CHANGE_TYPE, CHANGE_COLOR, PLAY_SEQUENCE, ADD_TO_PLAYED_KEYS, addPiano, removePiano } from '../actions/index.js';
 import { generateNewPiano, findPianoIndex, colorChangeUtil, sequencePlayUtil } from './utils.js';
 
 let pianoId = 0;
@@ -9,7 +9,8 @@ let initalState = {
   newPianoType: 'necktieMode'
 }
 
-function pianos(state = initalState, action) {
+const pianos = (state = initalState, action) => {
+  console.log(state)
   switch(action.type) {
     case ADD_PIANO:
       return Object.assign({}, state, {
@@ -21,7 +22,7 @@ function pianos(state = initalState, action) {
     case REMOVE_PIANO:
       pianoId--;
       return Object.assign({}, state, {
-        pianos: state.slice(0, state.pianos.length - 1)
+        pianos: state.pianos.slice(0, state.pianos.length - 1)
       })
     case CHANGE_TYPE:
       return Object.assign({}, state, {
@@ -32,7 +33,7 @@ function pianos(state = initalState, action) {
       let key = action.keyToChange;
       return Object.assign({}, state, {
         pianos: [
-          ...state.pianos(0, index),
+          ...state.pianos.slice(0, index),
           Object.assign({}, state.pianos[index], {
             key: colorChangeUtil(state.pianos[index][key])
           }),
@@ -64,6 +65,8 @@ function pianos(state = initalState, action) {
           ...state.pianos.slice(indexPlyd + 1)
         ]
       })
+    default:
+      return state;
   }
 }
 
