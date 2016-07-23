@@ -26,11 +26,14 @@ export function findPianoIndex(pianos, index) {
 }
 
 
-export function colorChangeUtil(color) {
+export function colorChangeUtil(color, key) {
+  var obj = {};
   if(color === 'white') {
-    return 'blue';
+    obj[key] = 'blue';
+    return obj;
   } else {
-    return 'white';
+    obj[key] = 'white';
+    return obj;
   }
 }
 
@@ -56,7 +59,7 @@ const necktiePiano = {
 }
 
 const sillyPiano = {
-  img: './../assets/pknecktie5.png',
+  img: './../assets/mugatu-o.gif',
   type: 'sillyMode',
   audio: 'sillyAudio',
   playedKeys: [],
@@ -71,7 +74,7 @@ const sillyPiano = {
 }
 
 const pianoPiano = {
-  img: './../assets/pknecktie5.png',
+  img: './../assets/piano.jpg',
   type: 'pianoMode',
   audio: 'pianoAudio',
   playedKeys: [],

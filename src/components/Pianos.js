@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Piano from './piano';
 
-const Pianos = ({ pianos, changeColor, playSequence, addToPlayedKeys }) => {
-  let pianoArray = pianos.map((piano) => { <Piano key={piano.id} piano={piano} changeColor={changeColor} playSequence={playSequence} addToPlayedKeys={addToPlayedKeys} />});
-  return (<div>{pianoArray}</div>);
+class Pianos extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    console.log('this.props.pianos', this.props.pianos)
+    let pianoArray = this.props.pianos.map((piano) => {
+      return (<Piano key={piano.id}
+                     piano={piano}
+                     changeColor={this.props.changeColor}
+                     playSequence={this.props.playSequence}
+                     addToPlayedKeys={this.props.addToPlayedKeys} />)});
+    return (<div>{pianoArray}</div>);
+  }
 }
 
 export default Pianos;

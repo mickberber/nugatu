@@ -1,23 +1,35 @@
 import React from 'react';
 
+import audio from './../utils';
 import WhiteKey from './WhiteKey';
 import BlackKeys from './BlackKeys';
 
-const whiteKeyUtil = (piano) => {
+const keyAudioHelper = (type, key) => {
+  return audio[type][key];
+}
+
+const whiteKeyUtil = (piano, changeColor, addToPlayedKeys) => {
+  const makeWhiteKey = (letter) => {
+    return (<WhiteKey letter={letter} color={piano[letter]} pianoId={piano.id} changeColor={changeColor} addToPlayedKeys={addToPlayedKeys} keyAudio={keyAudioHelper(piano.type, letter)} />);
+  }
+  //Made seperately for keeping order
   var keyArray = [];
-  keyArray.push(<WhiteKey letter={'C'} color={piano.C} />);
-  keyArray.push(<WhiteKey letter={'D'} color={piano.D} />);
-  keyArray.push(<WhiteKey letter={'E'} color={piano.E} />);
-  keyArray.push(<WhiteKey letter={'F'} color={piano.F} />);
-  keyArray.push(<WhiteKey letter={'G'} color={piano.G} />);
-  keyArray.push(<WhiteKey letter={'A'} color={piano.A} />);
-  keyArray.push(<WhiteKey letter={'B'} color={piano.B} />);
+  keyArray.push(makeWhiteKey('C'));
+  keyArray.push(makeWhiteKey('D'));
+  keyArray.push(makeWhiteKey('E'));
+  keyArray.push(makeWhiteKey('F'));
+  keyArray.push(makeWhiteKey('G'));
+  keyArray.push(makeWhiteKey('A'));
+  keyArray.push(makeWhiteKey('B'));
+  return keyArray;
 }
 
 const Keys = ({ piano, changeColor, addToPlayedKeys }) => {
-  let whiteKeys = whiteKeyUtil(piano);
+  let whiteKeys = whiteKeyUtil(piano, changeColor, addToPlayedKeys);
   return (<div>
-            <div>{whiteKeys}</div>
-            <div>{BlackKeys}</div>
+            <div className='white'>{whiteKeys}</div>
+            <BlackKeys />
           </div>);
 }
+
+export default Keys;

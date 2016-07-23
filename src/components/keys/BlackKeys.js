@@ -12,4 +12,4 @@ const BlackKeys = () => {
           );
 }
 
-export default BlackKeys
+export default BlackKeys;

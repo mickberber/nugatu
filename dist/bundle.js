@@ -21459,19 +21459,9 @@
 	    playSequence: function playSequence(pianoIndex, textToPlay) {
 	      dispatch((0, _index.playSequence)(pianoIndex, textToPlay));
 	    },
-	    addToPlayedKeys: function (_addToPlayedKeys) {
-	      function addToPlayedKeys(_x, _x2) {
-	        return _addToPlayedKeys.apply(this, arguments);
-	      }
-
-	      addToPlayedKeys.toString = function () {
-	        return _addToPlayedKeys.toString();
-	      };
-
-	      return addToPlayedKeys;
-	    }(function (pianoIndex, playedKey) {
-	      dispatch(addToPlayedKeys(pianoIndex, playedKey));
-	    })
+	    addToPlayedKeys: function addToPlayedKeys(pianoIndex, playedKey) {
+	      dispatch((0, _index.addToPlayedKeys)(pianoIndex, playedKey));
+	    }
 	  };
 	}
 
@@ -21680,6 +21670,8 @@
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -21690,21 +21682,44 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Pianos = function Pianos(_ref) {
-	  var pianos = _ref.pianos;
-	  var changeColor = _ref.changeColor;
-	  var playSequence = _ref.playSequence;
-	  var addToPlayedKeys = _ref.addToPlayedKeys;
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	  var pianoArray = pianos.map(function (piano) {
-	    _react2.default.createElement(_piano2.default, { key: piano.id, piano: piano, changeColor: changeColor, playSequence: playSequence, addToPlayedKeys: addToPlayedKeys });
-	  });
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    pianoArray
-	  );
-	};
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Pianos = function (_Component) {
+	  _inherits(Pianos, _Component);
+
+	  function Pianos(props) {
+	    _classCallCheck(this, Pianos);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Pianos).call(this, props));
+	  }
+
+	  _createClass(Pianos, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      console.log('this.props.pianos', this.props.pianos);
+	      var pianoArray = this.props.pianos.map(function (piano) {
+	        return _react2.default.createElement(_piano2.default, { key: piano.id,
+	          piano: piano,
+	          changeColor: _this2.props.changeColor,
+	          playSequence: _this2.props.playSequence,
+	          addToPlayedKeys: _this2.props.addToPlayedKeys });
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        pianoArray
+	      );
+	    }
+	  }]);
+
+	  return Pianos;
+	}(_react.Component);
 
 	exports.default = Pianos;
 
@@ -21715,7 +21730,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	          value: true
+	  value: true
 	});
 
 	var _react = __webpack_require__(2);
@@ -21733,47 +21748,35 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Piano = function Piano(_ref) {
-	          var piano = _ref.piano;
-	          var changeColor = _ref.changeColor;
-	          var playSequence = _ref.playSequence;
-	          var addToPlayedKeys = _ref.addToPlayedKeys;
+	  var piano = _ref.piano;
+	  var changeColor = _ref.changeColor;
+	  var playSequence = _ref.playSequence;
+	  var addToPlayedKeys = _ref.addToPlayedKeys;
 
-	          return _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    _react2.default.createElement(
-	                              'div',
-	                              null,
-	                              piano.type
-	                    ),
-	                    _react2.default.createElement(_Keys2.default, { piano: piano, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys }),
-	                    _react2.default.createElement('img', { src: piano.img }),
-	                    _react2.default.createElement(
-	                              'div',
-	                              null,
-	                              'Played Keys:',
-	                              piano.playedKeys
-	                    )
-	          );
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      piano.type
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'piano' },
+	      _react2.default.createElement(_Keys2.default, { piano: piano, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys }),
+	      _react2.default.createElement('img', { src: piano.img, style: { height: '400px', width: '750px', float: 'right' } })
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      'Played Keys:',
+	      piano.playedKeys
+	    )
+	  );
 	};
 
 	exports.default = Piano;
-
-	// //items to display
-	// const pianoPiano = {
-	//   img: './../assets/pknecktie5.png',
-	//   type: 'pianoMode',
-	//   audio: 'pianoAudio',
-	//   playedKeys: [],
-	//   text: '',
-	//   'C': 'white',
-	//   'D': 'white',
-	//   'E': 'white',
-	//   'F': 'white',
-	//   'G': 'white',
-	//   'A': 'white',
-	//   'B': 'white'
-	// }
 
 /***/ },
 /* 192 */
@@ -21781,9 +21784,17 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _utils = __webpack_require__(198);
+
+	var _utils2 = _interopRequireDefault(_utils);
 
 	var _WhiteKey = __webpack_require__(193);
 
@@ -21795,15 +21806,24 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var whiteKeyUtil = function whiteKeyUtil(piano) {
+	var keyAudioHelper = function keyAudioHelper(type, key) {
+	  return _utils2.default[type][key];
+	};
+
+	var whiteKeyUtil = function whiteKeyUtil(piano, changeColor, addToPlayedKeys) {
+	  var makeWhiteKey = function makeWhiteKey(letter) {
+	    return _react2.default.createElement(_WhiteKey2.default, { letter: letter, color: piano[letter], pianoId: piano.id, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys, keyAudio: keyAudioHelper(piano.type, letter) });
+	  };
+	  //Made seperately for keeping order
 	  var keyArray = [];
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'C', color: piano.C }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'D', color: piano.D }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'E', color: piano.E }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'F', color: piano.F }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'G', color: piano.G }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'A', color: piano.A }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'B', color: piano.B }));
+	  keyArray.push(makeWhiteKey('C'));
+	  keyArray.push(makeWhiteKey('D'));
+	  keyArray.push(makeWhiteKey('E'));
+	  keyArray.push(makeWhiteKey('F'));
+	  keyArray.push(makeWhiteKey('G'));
+	  keyArray.push(makeWhiteKey('A'));
+	  keyArray.push(makeWhiteKey('B'));
+	  return keyArray;
 	};
 
 	var Keys = function Keys(_ref) {
@@ -21811,28 +21831,30 @@
 	  var changeColor = _ref.changeColor;
 	  var addToPlayedKeys = _ref.addToPlayedKeys;
 
-	  var whiteKeys = whiteKeyUtil(piano);
+	  var whiteKeys = whiteKeyUtil(piano, changeColor, addToPlayedKeys);
 	  return _react2.default.createElement(
 	    'div',
 	    null,
 	    _react2.default.createElement(
 	      'div',
-	      null,
+	      { className: 'white' },
 	      whiteKeys
 	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _BlackKeys2.default
-	    )
+	    _react2.default.createElement(_BlackKeys2.default, null)
 	  );
 	};
+
+	exports.default = Keys;
 
 /***/ },
 /* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
 	var _react = __webpack_require__(2);
 
@@ -21841,23 +21863,37 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var playAudio = function playAudio(keyAudio) {
-	    new Audio(keyAudio).play();
+	  new Audio(keyAudio).play();
 	};
 
 	var WhiteKey = function WhiteKey(_ref) {
-	    var letter = _ref.letter;
-	    var color = _ref.color;
+	  var letter = _ref.letter;
+	  var color = _ref.color;
+	  var pianoId = _ref.pianoId;
+	  var changeColor = _ref.changeColor;
+	  var addToPlayedKeys = _ref.addToPlayedKeys;
+	  var keyAudio = _ref.keyAudio;
 
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'keyboard', style: { backgroundColor: color } },
-	        _react2.default.createElement(
-	            'div',
-	            { style: { textAlign: 'center', paddingTop: '375px' } },
-	            letter
-	        )
-	    );
+	  var helper = function helper() {
+	    changeColor(pianoId, letter);
+	    addToPlayedKeys(pianoId, letter);
+	    playAudio(keyAudio);
+	    setTimeout(function () {
+	      changeColor(pianoId, letter);
+	    }, 1000);
+	  };
+	  return _react2.default.createElement(
+	    'div',
+	    { onClick: helper, className: 'keyboard', style: { backgroundColor: color } },
+	    _react2.default.createElement(
+	      'div',
+	      { style: { textAlign: 'center', paddingTop: '375px' } },
+	      letter
+	    )
+	  );
 	};
+
+	exports.default = WhiteKey;
 
 /***/ },
 /* 194 */
@@ -21974,12 +22010,9 @@
 	        newPianoType: action.newType
 	      });
 	    case _index.CHANGE_COLOR:
-	      var index = (0, _utils.findPianoIndex)(state.pianos, action.pianoIndex);
 	      var key = action.keyToChange;
 	      return Object.assign({}, state, {
-	        pianos: [].concat(_toConsumableArray(state.pianos.slice(0, index)), [Object.assign({}, state.pianos[index], {
-	          key: (0, _utils.colorChangeUtil)(state.pianos[index][key])
-	        })], _toConsumableArray(state.pianos.slice(index + 1)))
+	        pianos: [].concat(_toConsumableArray(state.pianos.slice(0, action.pianoIndex)), [Object.assign({}, state.pianos[action.pianoIndex], (0, _utils.colorChangeUtil)(state.pianos[action.pianoIndex][key], key))], _toConsumableArray(state.pianos.slice(action.pianoIndex + 1)))
 	      });
 	    case _index.PLAY_SEQUENCE:
 	      var indexSeq = (0, _utils.findPianoIndex)(state.pianos, action.pianoIndex);
@@ -22043,11 +22076,14 @@
 	  return -1;
 	}
 
-	function colorChangeUtil(color) {
+	function colorChangeUtil(color, key) {
+	  var obj = {};
 	  if (color === 'white') {
-	    return 'blue';
+	    obj[key] = 'blue';
+	    return obj;
 	  } else {
-	    return 'white';
+	    obj[key] = 'white';
+	    return obj;
 	  }
 	}
 
@@ -22071,7 +22107,7 @@
 	};
 
 	var sillyPiano = {
-	  img: './../assets/pknecktie5.png',
+	  img: './../assets/mugatu-o.gif',
 	  type: 'sillyMode',
 	  audio: 'sillyAudio',
 	  playedKeys: [],
@@ -22086,7 +22122,7 @@
 	};
 
 	var pianoPiano = {
-	  img: './../assets/pknecktie5.png',
+	  img: './../assets/piano.jpg',
 	  type: 'pianoMode',
 	  audio: 'pianoAudio',
 	  playedKeys: [],
@@ -22099,6 +22135,51 @@
 	  'A': 'white',
 	  'B': 'white'
 	};
+
+/***/ },
+/* 198 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	        value: true
+	});
+	// File for Audio file paths
+
+	var audio = {};
+
+	audio.necktieMode = {
+	        'C': './../assets/sounds/NECKTIE/C.wav',
+	        'D': './../assets/sounds/NECKTIE/D.wav',
+	        'E': './../assets/sounds/NECKTIE/E.wav',
+	        'F': './../assets/sounds/NECKTIE/F.wav',
+	        'G': './../assets/sounds/NECKTIE/G.wav',
+	        'A': './../assets/sounds/NECKTIE/A.wav',
+	        'B': './../assets/sounds/NECKTIE/B.wav'
+	};
+
+	audio.sillyMode = {
+	        'C': './../assets/sounds/MUGATUS_SILLY_MODE/C.wav',
+	        'D': './../assets/sounds/MUGATUS_SILLY_MODE/D.wav',
+	        'E': './../assets/sounds/MUGATUS_SILLY_MODE/E.wav',
+	        'F': './../assets/sounds/MUGATUS_SILLY_MODE/F.wav',
+	        'G': './../assets/sounds/MUGATUS_SILLY_MODE/G.wav',
+	        'A': './../assets/sounds/MUGATUS_SILLY_MODE/A.wav',
+	        'B': './../assets/sounds/MUGATUS_SILLY_MODE/B.wav'
+	};
+
+	audio.pianoMode = {
+	        'C': './../assets/sounds/PIANO/C.wav',
+	        'D': './../assets/sounds/PIANO/D.wav',
+	        'E': './../assets/sounds/PIANO/E.wav',
+	        'F': './../assets/sounds/PIANO/F.wav',
+	        'G': './../assets/sounds/PIANO/G.wav',
+	        'A': './../assets/sounds/PIANO/A.wav',
+	        'B': './../assets/sounds/PIANO/B.wav'
+	};
+
+	exports.default = audio;
 
 /***/ }
 /******/ ]);
