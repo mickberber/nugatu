@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { addPiano , removePiano, changeColor, changeType, playSequence } from './../actions/index'
+import { addPiano , removePiano, changeColor, changeType, playSequence, addToPlayedKeys } from './../actions/index'
 
 import App from './../components/App';
 

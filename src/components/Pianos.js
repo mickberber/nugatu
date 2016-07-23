@@ -8,8 +8,12 @@ class Pianos extends Component {
   }
   render() {
     console.log('this.props.pianos', this.props.pianos)
-    let pianoArray = this.props.pianos.map((piano) => { return (<Piano key={piano.id} piano={piano} changeColor={this.props.changeColor} playSequence={this.props.playSequence} addToPlayedKeys={this.props.addToPlayedKeys} />)});
-    console.log('pianoArray', pianoArray)
+    let pianoArray = this.props.pianos.map((piano) => {
+      return (<Piano key={piano.id}
+                     piano={piano}
+                     changeColor={this.props.changeColor}
+                     playSequence={this.props.playSequence}
+                     addToPlayedKeys={this.props.addToPlayedKeys} />)});
     return (<div>{pianoArray}</div>);
   }
 }

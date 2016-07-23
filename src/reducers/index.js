@@ -29,15 +29,14 @@ const pianos = (state = initalState, action) => {
         newPianoType: action.newType
       })
     case CHANGE_COLOR:
-      let index = findPianoIndex(state.pianos, action.pianoIndex);
       let key = action.keyToChange;
       return Object.assign({}, state, {
         pianos: [
-          ...state.pianos.slice(0, index),
-          Object.assign({}, state.pianos[index], {
-            key: colorChangeUtil(state.pianos[index][key])
-          }),
-          ...state.pianos.slice(index + 1)
+          ...state.pianos.slice(0, action.pianoIndex),
+          Object.assign({}, state.pianos[action.pianoIndex],
+            colorChangeUtil(state.pianos[action.pianoIndex][key], key)
+          ),
+          ...state.pianos.slice(action.pianoIndex + 1)
         ]
       })
     case PLAY_SEQUENCE:

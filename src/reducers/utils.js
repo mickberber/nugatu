@@ -26,11 +26,14 @@ export function findPianoIndex(pianos, index) {
 }
 
 
-export function colorChangeUtil(color) {
+export function colorChangeUtil(color, key) {
+  var obj = {};
   if(color === 'white') {
-    return 'blue';
+    obj[key] = 'blue';
+    return obj;
   } else {
-    return 'white';
+    obj[key] = 'white';
+    return obj;
   }
 }
 
