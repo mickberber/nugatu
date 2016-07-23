@@ -1,6 +1,6 @@
 import React from 'react';
 
-import audio from './../utils';
+import audio from './../utils/audio';
 import WhiteKey from './WhiteKey';
 import BlackKeys from './BlackKeys';
 

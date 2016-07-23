@@ -21776,9 +21776,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _utils = __webpack_require__(193);
+	var _audio = __webpack_require__(199);
 
-	var _utils2 = _interopRequireDefault(_utils);
+	var _audio2 = _interopRequireDefault(_audio);
 
 	var _WhiteKey = __webpack_require__(194);
 
@@ -21791,7 +21791,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var keyAudioHelper = function keyAudioHelper(type, key) {
-	  return _utils2.default[type][key];
+	  return _audio2.default[type][key];
 	};
 
 	var whiteKeyUtil = function whiteKeyUtil(piano, changeColor, addToPlayedKeys) {
@@ -21831,51 +21831,7 @@
 	exports.default = Keys;
 
 /***/ },
-/* 193 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	        value: true
-	});
-	// File for Audio file paths
-
-	var audio = {};
-
-	audio.necktieMode = {
-	        'C': './../assets/sounds/NECKTIE/C.wav',
-	        'D': './../assets/sounds/NECKTIE/D.wav',
-	        'E': './../assets/sounds/NECKTIE/E.wav',
-	        'F': './../assets/sounds/NECKTIE/F.wav',
-	        'G': './../assets/sounds/NECKTIE/G.wav',
-	        'A': './../assets/sounds/NECKTIE/A.wav',
-	        'B': './../assets/sounds/NECKTIE/B.wav'
-	};
-
-	audio.sillyMode = {
-	        'C': './../assets/sounds/MUGATUS_SILLY_MODE/C.wav',
-	        'D': './../assets/sounds/MUGATUS_SILLY_MODE/D.wav',
-	        'E': './../assets/sounds/MUGATUS_SILLY_MODE/E.wav',
-	        'F': './../assets/sounds/MUGATUS_SILLY_MODE/F.wav',
-	        'G': './../assets/sounds/MUGATUS_SILLY_MODE/G.wav',
-	        'A': './../assets/sounds/MUGATUS_SILLY_MODE/A.wav',
-	        'B': './../assets/sounds/MUGATUS_SILLY_MODE/B.wav'
-	};
-
-	audio.pianoMode = {
-	        'C': './../assets/sounds/PIANO/C.wav',
-	        'D': './../assets/sounds/PIANO/D.wav',
-	        'E': './../assets/sounds/PIANO/E.wav',
-	        'F': './../assets/sounds/PIANO/F.wav',
-	        'G': './../assets/sounds/PIANO/G.wav',
-	        'A': './../assets/sounds/PIANO/A.wav',
-	        'B': './../assets/sounds/PIANO/B.wav'
-	};
-
-	exports.default = audio;
-
-/***/ },
+/* 193 */,
 /* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -21969,9 +21925,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _utils = __webpack_require__(193);
+	var _audio = __webpack_require__(199);
 
-	var _utils2 = _interopRequireDefault(_utils);
+	var _audio2 = _interopRequireDefault(_audio);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21998,7 +21954,7 @@
 	                return;
 	            }
 	            changeColor(pianoId, textArr[i].toUpperCase());
-	            playAudio(_utils2.default[type][textArr[i].toUpperCase()]);
+	            playAudio(_audio2.default[type][textArr[i].toUpperCase()]);
 	            setTimeout(function () {
 	                changeColor(pianoId, textArr[i].toUpperCase());
 	                playAll(i + 1);
@@ -22242,6 +22198,51 @@
 	  'A': 'white',
 	  'B': 'white'
 	};
+
+/***/ },
+/* 199 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	        value: true
+	});
+	// File for Audio file paths
+
+	var audio = {};
+
+	audio.necktieMode = {
+	        'C': './../assets/sounds/NECKTIE/C.wav',
+	        'D': './../assets/sounds/NECKTIE/D.wav',
+	        'E': './../assets/sounds/NECKTIE/E.wav',
+	        'F': './../assets/sounds/NECKTIE/F.wav',
+	        'G': './../assets/sounds/NECKTIE/G.wav',
+	        'A': './../assets/sounds/NECKTIE/A.wav',
+	        'B': './../assets/sounds/NECKTIE/B.wav'
+	};
+
+	audio.sillyMode = {
+	        'C': './../assets/sounds/MUGATUS_SILLY_MODE/C.wav',
+	        'D': './../assets/sounds/MUGATUS_SILLY_MODE/D.wav',
+	        'E': './../assets/sounds/MUGATUS_SILLY_MODE/E.wav',
+	        'F': './../assets/sounds/MUGATUS_SILLY_MODE/F.wav',
+	        'G': './../assets/sounds/MUGATUS_SILLY_MODE/G.wav',
+	        'A': './../assets/sounds/MUGATUS_SILLY_MODE/A.wav',
+	        'B': './../assets/sounds/MUGATUS_SILLY_MODE/B.wav'
+	};
+
+	audio.pianoMode = {
+	        'C': './../assets/sounds/PIANO/C.wav',
+	        'D': './../assets/sounds/PIANO/D.wav',
+	        'E': './../assets/sounds/PIANO/E.wav',
+	        'F': './../assets/sounds/PIANO/F.wav',
+	        'G': './../assets/sounds/PIANO/G.wav',
+	        'A': './../assets/sounds/PIANO/A.wav',
+	        'B': './../assets/sounds/PIANO/B.wav'
+	};
+
+	exports.default = audio;
 
 /***/ }
 /******/ ]);
