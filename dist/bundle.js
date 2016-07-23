@@ -21918,119 +21918,47 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _audio = __webpack_require__(199);
+	var _playSequence = __webpack_require__(201);
 
-	var _audio2 = _interopRequireDefault(_audio);
+	var _playSequence2 = _interopRequireDefault(_playSequence);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var handleChangeText = function handleChangeText() {};
-
-	var playAudio = function playAudio(keyAudio) {
-	    new Audio(keyAudio).play();
-	};
 
 	var input = '';
 
 	var Input = function Input(_ref) {
-	    var pianoId = _ref.pianoId;
-	    var changeColor = _ref.changeColor;
-	    var type = _ref.type;
+	  var pianoId = _ref.pianoId;
+	  var changeColor = _ref.changeColor;
+	  var type = _ref.type;
 
-	    var playSequence = function playSequence(pianoId, text) {
-	        verify(text);
-	        var textArr = text.split(',');
-	        function playAll() {
-	            var i = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
-
-	            if (i >= textArr.length) {
-	                return;
-	            }
-	            changeColor(pianoId, textArr[i].toUpperCase());
-	            playAudio(_audio2.default[type][textArr[i].toUpperCase()]);
-	            setTimeout(function () {
-	                changeColor(pianoId, textArr[i].toUpperCase());
-	                playAll(i + 1);
-	            }, 1000);
-	        }
-	        playAll();
-	    };
-
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	            'fieldset',
-	            { className: 'form-group' },
-	            _react2.default.createElement(
-	                'button',
-	                { onClick: function onClick(e) {
-	                        console.log(e);e.preventDefault();playSequence(pianoId, input);
-	                    }, className: 'btn btn-warning' },
-	                'Play a key sequence'
-	            ),
-	            _react2.default.createElement('input', { onChange: function onChange(e) {
-	                    input = e.target.value;
-	                }, className: 'form-control', placeholder: 'input key sequence' })
-	        )
-	    );
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'fieldset',
+	      { className: 'form-group' },
+	      _react2.default.createElement(
+	        'button',
+	        { onClick: function onClick(e) {
+	            e.preventDefault();(0, _playSequence2.default)(pianoId, changeColor, type, input);
+	          }, className: 'btn btn-warning' },
+	        'Play a key sequence'
+	      ),
+	      _react2.default.createElement('input', { onChange: function onChange(e) {
+	          input = e.target.value;
+	        }, className: 'form-control', placeholder: 'input key sequence' })
+	    )
+	  );
 	};
 
 	exports.default = Input;
-
-	/* Verify User Input Formatting */
-
-	function verify(string) {
-	    //check type
-	    if (typeof string !== 'string') {
-	        return false;
-	    }
-	    if (string === '') {
-	        //test for empty string
-	        alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
-	        return false;
-	    }
-	    for (var i = 0; i < string.length; i++) {
-	        //check index 1 for comma
-	        if (i === 1 && string[i] !== ',') {
-	            alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
-	            return false;
-	        }
-	        //check odd indexes for commas
-	        if (i % 2 !== 0) {
-	            if (string[i] !== ',') {
-	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
-	                return false;
-	            }
-	        } else {
-	            //check even indexes for valid keys
-	            if (!checkAgainstKeys(string[i])) {
-	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
-	                return false;
-	            }
-	        }
-	    }
-	    return true;
-	}
-
-	//verify letters are keys on the piano
-	function checkAgainstKeys(val) {
-	    val = val.toUpperCase();
-	    var keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-	    for (var i = 0; i < keys.length; i++) {
-	        if (val === keys[i]) {
-	            return true;
-	        }
-	    }
-	    return false;
-	}
 
 /***/ },
 /* 197 */
@@ -22243,6 +22171,108 @@
 	};
 
 	exports.default = audio;
+
+/***/ },
+/* 200 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/* Verify User Input Formatting */
+	function verify(string) {
+	    //check type
+	    if (typeof string !== 'string') {
+	        return false;
+	    }
+	    if (string === '') {
+	        //test for empty string
+	        alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	        return false;
+	    }
+	    for (var i = 0; i < string.length; i++) {
+	        //check index 1 for comma
+	        if (i === 1 && string[i] !== ',') {
+	            alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	            return false;
+	        }
+	        //check odd indexes for commas
+	        if (i % 2 !== 0) {
+	            if (string[i] !== ',') {
+	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	                return false;
+	            }
+	        } else {
+	            //check even indexes for valid keys
+	            if (!checkAgainstKeys(string[i])) {
+	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	                return false;
+	            }
+	        }
+	    }
+	    return true;
+	}
+
+	//verify letters are keys on the piano
+	function checkAgainstKeys(val) {
+	    val = val.toUpperCase();
+	    var keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+	    for (var i = 0; i < keys.length; i++) {
+	        if (val === keys[i]) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
+	exports.default = verify;
+
+/***/ },
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _audio = __webpack_require__(199);
+
+	var _audio2 = _interopRequireDefault(_audio);
+
+	var _verify = __webpack_require__(200);
+
+	var _verify2 = _interopRequireDefault(_verify);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var playAudio = function playAudio(keyAudio) {
+	  new Audio(keyAudio).play();
+	};
+
+	var playSequence = function playSequence(pianoId, changeColor, type, text) {
+	  (0, _verify2.default)(text);
+	  var textArr = text.split(',');
+	  function playAll() {
+	    var i = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+
+	    if (i >= textArr.length) {
+	      return;
+	    }
+	    changeColor(pianoId, textArr[i].toUpperCase());
+	    playAudio(_audio2.default[type][textArr[i].toUpperCase()]);
+	    setTimeout(function () {
+	      changeColor(pianoId, textArr[i].toUpperCase());
+	      playAll(i + 1);
+	    }, 1000);
+	  }
+	  playAll();
+	};
+
+	exports.default = playSequence;
 
 /***/ }
 /******/ ]);
