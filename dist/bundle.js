@@ -22085,7 +22085,6 @@
 	var necktiePiano = {
 	  img: './../assets/pknecktie5.png',
 	  type: 'necktieMode',
-	  audio: 'necktieAudio',
 	  playedKeys: [],
 	  text: '',
 	  'C': 'white',
@@ -22100,7 +22099,6 @@
 	var sillyPiano = {
 	  img: './../assets/mugatu-o.gif',
 	  type: 'sillyMode',
-	  audio: 'sillyAudio',
 	  playedKeys: [],
 	  text: '',
 	  'C': 'white',
@@ -22115,7 +22113,6 @@
 	var pianoPiano = {
 	  img: './../assets/piano.jpg',
 	  type: 'pianoMode',
-	  audio: 'pianoAudio',
 	  playedKeys: [],
 	  text: '',
 	  'C': 'white',
