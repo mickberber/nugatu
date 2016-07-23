@@ -21811,14 +21811,18 @@
 	};
 
 	var whiteKeyUtil = function whiteKeyUtil(piano, changeColor, addToPlayedKeys) {
+	  var makeWhiteKey = function makeWhiteKey(letter) {
+	    return _react2.default.createElement(_WhiteKey2.default, { letter: letter, color: piano[letter], pianoId: piano.id, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys, keyAudio: keyAudioHelper(piano.type, letter) });
+	  };
+	  //Made seperately for keeping order
 	  var keyArray = [];
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'C', color: piano.C, pianoId: piano.id, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys, keyAudio: keyAudioHelper(piano.type, 'C') }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'D', color: piano.D, pianoId: piano.id, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys, keyAudio: keyAudioHelper(piano.type, 'D') }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'E', color: piano.E, pianoId: piano.id, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys, keyAudio: keyAudioHelper(piano.type, 'E') }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'F', color: piano.F, pianoId: piano.id, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys, keyAudio: keyAudioHelper(piano.type, 'F') }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'G', color: piano.G, pianoId: piano.id, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys, keyAudio: keyAudioHelper(piano.type, 'G') }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'A', color: piano.A, pianoId: piano.id, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys, keyAudio: keyAudioHelper(piano.type, 'A') }));
-	  keyArray.push(_react2.default.createElement(_WhiteKey2.default, { letter: 'B', color: piano.B, pianoId: piano.id, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys, keyAudio: keyAudioHelper(piano.type, 'B') }));
+	  keyArray.push(makeWhiteKey('C'));
+	  keyArray.push(makeWhiteKey('D'));
+	  keyArray.push(makeWhiteKey('E'));
+	  keyArray.push(makeWhiteKey('F'));
+	  keyArray.push(makeWhiteKey('G'));
+	  keyArray.push(makeWhiteKey('A'));
+	  keyArray.push(makeWhiteKey('B'));
 	  return keyArray;
 	};
 
