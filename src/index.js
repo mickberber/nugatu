@@ -1,18 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import { Router, Route, hashHistory } from 'react-router';
 
-import reducers from './reducers';
-import App from './components/app';
+import Container from './containers/container';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+import store from './reducers/index';
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <Router history={hashHistory}>
-      <Route path='/' component={App}/>
-    </Router>
-  </Provider>
-  , document.querySelector('.attach'));
+  <Provider store={store}>
+    <Container />
+  </Provider>, document.querySelector('.attach'));
