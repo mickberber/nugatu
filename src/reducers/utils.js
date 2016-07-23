@@ -1,3 +1,5 @@
+import { changeColor } from './../actions/index';
+
 export function generateNewPiano(pianoId, type) {
   switch(type) {
     case 'sillyMode':
@@ -37,16 +39,13 @@ export function colorChangeUtil(color, key) {
   }
 }
 
-
 export function sequencePlayUtil(actionText) {
   return actionText;
 }
 
-
 const necktiePiano = {
   img: './../assets/pknecktie5.png',
   type: 'necktieMode',
-  audio: 'necktieAudio',
   playedKeys: [],
   text: '',
   'C': 'white',
@@ -61,7 +60,6 @@ const necktiePiano = {
 const sillyPiano = {
   img: './../assets/mugatu-o.gif',
   type: 'sillyMode',
-  audio: 'sillyAudio',
   playedKeys: [],
   text: '',
   'C': 'white',
@@ -76,7 +74,6 @@ const sillyPiano = {
 const pianoPiano = {
   img: './../assets/piano.jpg',
   type: 'pianoMode',
-  audio: 'pianoAudio',
   playedKeys: [],
   text: '',
   'C': 'white',

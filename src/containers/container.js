@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { addPiano , removePiano, changeColor, changeType, playSequence, addToPlayedKeys } from './../actions/index'
+import { addPiano , removePiano, changeColor, changeType, addToPlayedKeys } from './../actions/index'
 
 import App from './../components/App';
 
@@ -17,9 +17,6 @@ function mapDispatchToProps(dispatch) {
     },
     changeType: function(newType) {
       dispatch(changeType(newType));
-    },
-    playSequence: function(pianoIndex, textToPlay) {
-      dispatch(playSequence(pianoIndex, textToPlay));
     },
     addToPlayedKeys: function(pianoIndex, playedKey) {
       dispatch(addToPlayedKeys(pianoIndex, playedKey));

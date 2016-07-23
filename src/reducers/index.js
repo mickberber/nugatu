@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import { ADD_PIANO, REMOVE_PIANO, CHANGE_TYPE, CHANGE_COLOR, PLAY_SEQUENCE, ADD_TO_PLAYED_KEYS } from '../actions/index.js';
-import { generateNewPiano, findPianoIndex, colorChangeUtil, sequencePlayUtil } from './utils.js';
+import { ADD_PIANO, REMOVE_PIANO, CHANGE_TYPE, CHANGE_COLOR, ADD_TO_PLAYED_KEYS } from '../actions/index.js';
+import { generateNewPiano, findPianoIndex, colorChangeUtil } from './utils.js';
 
 let pianoId = 0;
 
@@ -37,17 +37,6 @@ const pianos = (state = initalState, action) => {
             colorChangeUtil(state.pianos[action.pianoIndex][key], key)
           ),
           ...state.pianos.slice(action.pianoIndex + 1)
-        ]
-      })
-    case PLAY_SEQUENCE:
-      let indexSeq = findPianoIndex(state.pianos, action.pianoIndex);
-      return Object.assign({}, state, {
-        pianos: [
-          ...state.pianos.slice(0, indexSeq),
-          Object.assign({}, state.pianos[indexSeq], {
-            text: sequencePlayUtil(action.textToPlay)
-          }),
-          ...state.pianos.slice(indexSeq + 1)
         ]
       })
     case ADD_TO_PLAYED_KEYS:
