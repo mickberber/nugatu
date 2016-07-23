@@ -39,11 +39,9 @@ export function colorChangeUtil(color, key) {
   }
 }
 
-
 export function sequencePlayUtil(actionText) {
   return actionText;
 }
-
 
 const necktiePiano = {
   img: './../assets/pknecktie5.png',
