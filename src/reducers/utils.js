@@ -1,3 +1,5 @@
+import { changeColor } from './../actions/index';
+
 export function generateNewPiano(pianoId, type) {
   switch(type) {
     case 'sillyMode':

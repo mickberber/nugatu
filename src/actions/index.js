@@ -3,7 +3,6 @@ export const ADD_PIANO = 'ADD_PIANO';
 export const REMOVE_PIANO = 'REMOVE_PIANO';
 export const CHANGE_COLOR = 'CHANGE_COLOR';
 export const CHANGE_TYPE = 'CHANGE_TYPE';
-export const PLAY_SEQUENCE = 'PLAY_SEQUENCE';
 export const ADD_TO_PLAYED_KEYS = 'ADD_TO_PLAYED_KEYS';
 
 export const PianoOptions = ['sillyMode', 'pianoMode', 'necktieMode'];
@@ -33,14 +32,6 @@ export function changeType(newType) {
   return {
     type: CHANGE_TYPE,
     newType: newType
-  }
-}
-
-export function playSequence(pianoIndex, textToPlay) {
-  return {
-    type: PLAY_SEQUENCE,
-    pianoIndex: pianoIndex,
-    textToPlay: textToPlay
   }
 }
 

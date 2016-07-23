@@ -67,7 +67,7 @@
 
 	var _container2 = _interopRequireDefault(_container);
 
-	var _index = __webpack_require__(196);
+	var _index = __webpack_require__(197);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -21456,9 +21456,6 @@
 	    changeType: function changeType(newType) {
 	      dispatch((0, _index.changeType)(newType));
 	    },
-	    playSequence: function playSequence(pianoIndex, textToPlay) {
-	      dispatch((0, _index.playSequence)(pianoIndex, textToPlay));
-	    },
 	    addToPlayedKeys: function addToPlayedKeys(pianoIndex, playedKey) {
 	      dispatch((0, _index.addToPlayedKeys)(pianoIndex, playedKey));
 	    }
@@ -21489,14 +21486,12 @@
 	exports.removePiano = removePiano;
 	exports.changeColor = changeColor;
 	exports.changeType = changeType;
-	exports.playSequence = playSequence;
 	exports.addToPlayedKeys = addToPlayedKeys;
 	//action constants
 	var ADD_PIANO = exports.ADD_PIANO = 'ADD_PIANO';
 	var REMOVE_PIANO = exports.REMOVE_PIANO = 'REMOVE_PIANO';
 	var CHANGE_COLOR = exports.CHANGE_COLOR = 'CHANGE_COLOR';
 	var CHANGE_TYPE = exports.CHANGE_TYPE = 'CHANGE_TYPE';
-	var PLAY_SEQUENCE = exports.PLAY_SEQUENCE = 'PLAY_SEQUENCE';
 	var ADD_TO_PLAYED_KEYS = exports.ADD_TO_PLAYED_KEYS = 'ADD_TO_PLAYED_KEYS';
 
 	var PianoOptions = exports.PianoOptions = ['sillyMode', 'pianoMode', 'necktieMode'];
@@ -21526,14 +21521,6 @@
 	  return {
 	    type: CHANGE_TYPE,
 	    newType: newType
-	  };
-	}
-
-	function playSequence(pianoIndex, textToPlay) {
-	  return {
-	    type: PLAY_SEQUENCE,
-	    pianoIndex: pianoIndex,
-	    textToPlay: textToPlay
 	  };
 	}
 
@@ -21574,7 +21561,6 @@
 	          var removePiano = _ref.removePiano;
 	          var changeColor = _ref.changeColor;
 	          var changeType = _ref.changeType;
-	          var playSequence = _ref.playSequence;
 	          var addToPlayedKeys = _ref.addToPlayedKeys;
 	          var pianos = _ref.pianos;
 	          var newPianoType = _ref.newPianoType;
@@ -21583,7 +21569,7 @@
 	                    'div',
 	                    null,
 	                    _react2.default.createElement(_nav2.default, { addPiano: addPiano, removePiano: removePiano, changeType: changeType, newPianoType: newPianoType }),
-	                    _react2.default.createElement(_pianos2.default, { pianos: pianos, changeColor: changeColor, playSequence: playSequence, addToPlayedKeys: addToPlayedKeys })
+	                    _react2.default.createElement(_pianos2.default, { pianos: pianos, changeColor: changeColor, addToPlayedKeys: addToPlayedKeys })
 	          );
 	};
 
@@ -21702,12 +21688,10 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      console.log('this.props.pianos', this.props.pianos);
 	      var pianoArray = this.props.pianos.map(function (piano) {
 	        return _react2.default.createElement(_piano2.default, { key: piano.id,
 	          piano: piano,
 	          changeColor: _this2.props.changeColor,
-	          playSequence: _this2.props.playSequence,
 	          addToPlayedKeys: _this2.props.addToPlayedKeys });
 	      });
 	      return _react2.default.createElement(
@@ -21741,7 +21725,7 @@
 
 	var _Keys2 = _interopRequireDefault(_Keys);
 
-	var _Input = __webpack_require__(195);
+	var _Input = __webpack_require__(196);
 
 	var _Input2 = _interopRequireDefault(_Input);
 
@@ -21750,7 +21734,6 @@
 	var Piano = function Piano(_ref) {
 	  var piano = _ref.piano;
 	  var changeColor = _ref.changeColor;
-	  var playSequence = _ref.playSequence;
 	  var addToPlayedKeys = _ref.addToPlayedKeys;
 
 	  return _react2.default.createElement(
@@ -21772,7 +21755,8 @@
 	      null,
 	      'Played Keys:',
 	      piano.playedKeys
-	    )
+	    ),
+	    _react2.default.createElement(_Input2.default, { pianoId: piano.id, changeColor: changeColor, type: piano.type })
 	  );
 	};
 
@@ -21792,15 +21776,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _utils = __webpack_require__(198);
+	var _utils = __webpack_require__(193);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _WhiteKey = __webpack_require__(193);
+	var _WhiteKey = __webpack_require__(194);
 
 	var _WhiteKey2 = _interopRequireDefault(_WhiteKey);
 
-	var _BlackKeys = __webpack_require__(194);
+	var _BlackKeys = __webpack_require__(195);
 
 	var _BlackKeys2 = _interopRequireDefault(_BlackKeys);
 
@@ -21848,6 +21832,51 @@
 
 /***/ },
 /* 193 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	        value: true
+	});
+	// File for Audio file paths
+
+	var audio = {};
+
+	audio.necktieMode = {
+	        'C': './../assets/sounds/NECKTIE/C.wav',
+	        'D': './../assets/sounds/NECKTIE/D.wav',
+	        'E': './../assets/sounds/NECKTIE/E.wav',
+	        'F': './../assets/sounds/NECKTIE/F.wav',
+	        'G': './../assets/sounds/NECKTIE/G.wav',
+	        'A': './../assets/sounds/NECKTIE/A.wav',
+	        'B': './../assets/sounds/NECKTIE/B.wav'
+	};
+
+	audio.sillyMode = {
+	        'C': './../assets/sounds/MUGATUS_SILLY_MODE/C.wav',
+	        'D': './../assets/sounds/MUGATUS_SILLY_MODE/D.wav',
+	        'E': './../assets/sounds/MUGATUS_SILLY_MODE/E.wav',
+	        'F': './../assets/sounds/MUGATUS_SILLY_MODE/F.wav',
+	        'G': './../assets/sounds/MUGATUS_SILLY_MODE/G.wav',
+	        'A': './../assets/sounds/MUGATUS_SILLY_MODE/A.wav',
+	        'B': './../assets/sounds/MUGATUS_SILLY_MODE/B.wav'
+	};
+
+	audio.pianoMode = {
+	        'C': './../assets/sounds/PIANO/C.wav',
+	        'D': './../assets/sounds/PIANO/D.wav',
+	        'E': './../assets/sounds/PIANO/E.wav',
+	        'F': './../assets/sounds/PIANO/F.wav',
+	        'G': './../assets/sounds/PIANO/G.wav',
+	        'A': './../assets/sounds/PIANO/A.wav',
+	        'B': './../assets/sounds/PIANO/B.wav'
+	};
+
+	exports.default = audio;
+
+/***/ },
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21896,7 +21925,7 @@
 	exports.default = WhiteKey;
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21927,46 +21956,128 @@
 	exports.default = BlackKeys;
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _utils = __webpack_require__(193);
+
+	var _utils2 = _interopRequireDefault(_utils);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var handleChangeText = function handleChangeText() {};
 
-	var Input = function Input(_ref) {
-	  var playSequence = _ref.playSequence;
+	var playAudio = function playAudio(keyAudio) {
+	    new Audio(keyAudio).play();
+	};
 
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'fieldset',
-	      { className: 'form-group' },
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: playSequence, className: 'btn btn-warning' },
-	        'Play a key sequence'
-	      ),
-	      _react2.default.createElement('input', { onChange: handleChangeText, className: 'form-control', placeholder: 'input key sequence' })
-	    )
-	  );
+	var input = '';
+
+	var Input = function Input(_ref) {
+	    var pianoId = _ref.pianoId;
+	    var changeColor = _ref.changeColor;
+	    var type = _ref.type;
+
+	    var playSequence = function playSequence(pianoId, text) {
+	        verify(text);
+	        var textArr = text.split(',');
+	        function playAll() {
+	            var i = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+
+	            if (i >= textArr.length) {
+	                return;
+	            }
+	            changeColor(pianoId, textArr[i].toUpperCase());
+	            playAudio(_utils2.default[type][textArr[i].toUpperCase()]);
+	            setTimeout(function () {
+	                changeColor(pianoId, textArr[i].toUpperCase());
+	                playAll(i + 1);
+	            }, 1000);
+	        }
+	        playAll();
+	    };
+
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	            'fieldset',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	                'button',
+	                { onClick: function onClick(e) {
+	                        console.log(e);e.preventDefault();playSequence(pianoId, input);
+	                    }, className: 'btn btn-warning' },
+	                'Play a key sequence'
+	            ),
+	            _react2.default.createElement('input', { onChange: function onChange(e) {
+	                    input = e.target.value;
+	                }, className: 'form-control', placeholder: 'input key sequence' })
+	        )
+	    );
 	};
 
 	exports.default = Input;
 
+	/* Verify User Input Formatting */
+
+	function verify(string) {
+	    //check type
+	    if (typeof string !== 'string') {
+	        return false;
+	    }
+	    if (string === '') {
+	        //test for empty string
+	        alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	        return false;
+	    }
+	    for (var i = 0; i < string.length; i++) {
+	        //check index 1 for comma
+	        if (i === 1 && string[i] !== ',') {
+	            alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	            return false;
+	        }
+	        //check odd indexes for commas
+	        if (i % 2 !== 0) {
+	            if (string[i] !== ',') {
+	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	                return false;
+	            }
+	        } else {
+	            //check even indexes for valid keys
+	            if (!checkAgainstKeys(string[i])) {
+	                alert('This is an incorrect submission! Try fromatting like this: a,b,c,d');
+	                return false;
+	            }
+	        }
+	    }
+	    return true;
+	}
+
+	//verify letters are keys on the piano
+	function checkAgainstKeys(val) {
+	    val = val.toUpperCase();
+	    var keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+	    for (var i = 0; i < keys.length; i++) {
+	        if (val === keys[i]) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21979,7 +22090,7 @@
 
 	var _index = __webpack_require__(187);
 
-	var _utils = __webpack_require__(197);
+	var _utils = __webpack_require__(198);
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -22014,13 +22125,6 @@
 	      return Object.assign({}, state, {
 	        pianos: [].concat(_toConsumableArray(state.pianos.slice(0, action.pianoIndex)), [Object.assign({}, state.pianos[action.pianoIndex], (0, _utils.colorChangeUtil)(state.pianos[action.pianoIndex][key], key))], _toConsumableArray(state.pianos.slice(action.pianoIndex + 1)))
 	      });
-	    case _index.PLAY_SEQUENCE:
-	      var indexSeq = (0, _utils.findPianoIndex)(state.pianos, action.pianoIndex);
-	      return Object.assign({}, state, {
-	        pianos: [].concat(_toConsumableArray(state.pianos.slice(0, indexSeq)), [Object.assign({}, state.pianos[indexSeq], {
-	          text: (0, _utils.sequencePlayUtil)(action.textToPlay)
-	        })], _toConsumableArray(state.pianos.slice(indexSeq + 1)))
-	      });
 	    case _index.ADD_TO_PLAYED_KEYS:
 	      var indexPlyd = (0, _utils.findPianoIndex)(state.pianos, action.pianoIndex);
 	      return Object.assign({}, state, {
@@ -22038,8 +22142,8 @@
 	exports.default = store;
 
 /***/ },
-/* 197 */
-/***/ function(module, exports) {
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -22050,6 +22154,9 @@
 	exports.findPianoIndex = findPianoIndex;
 	exports.colorChangeUtil = colorChangeUtil;
 	exports.sequencePlayUtil = sequencePlayUtil;
+
+	var _index = __webpack_require__(187);
+
 	function generateNewPiano(pianoId, type) {
 	  switch (type) {
 	    case 'sillyMode':
@@ -22135,51 +22242,6 @@
 	  'A': 'white',
 	  'B': 'white'
 	};
-
-/***/ },
-/* 198 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	        value: true
-	});
-	// File for Audio file paths
-
-	var audio = {};
-
-	audio.necktieMode = {
-	        'C': './../assets/sounds/NECKTIE/C.wav',
-	        'D': './../assets/sounds/NECKTIE/D.wav',
-	        'E': './../assets/sounds/NECKTIE/E.wav',
-	        'F': './../assets/sounds/NECKTIE/F.wav',
-	        'G': './../assets/sounds/NECKTIE/G.wav',
-	        'A': './../assets/sounds/NECKTIE/A.wav',
-	        'B': './../assets/sounds/NECKTIE/B.wav'
-	};
-
-	audio.sillyMode = {
-	        'C': './../assets/sounds/MUGATUS_SILLY_MODE/C.wav',
-	        'D': './../assets/sounds/MUGATUS_SILLY_MODE/D.wav',
-	        'E': './../assets/sounds/MUGATUS_SILLY_MODE/E.wav',
-	        'F': './../assets/sounds/MUGATUS_SILLY_MODE/F.wav',
-	        'G': './../assets/sounds/MUGATUS_SILLY_MODE/G.wav',
-	        'A': './../assets/sounds/MUGATUS_SILLY_MODE/A.wav',
-	        'B': './../assets/sounds/MUGATUS_SILLY_MODE/B.wav'
-	};
-
-	audio.pianoMode = {
-	        'C': './../assets/sounds/PIANO/C.wav',
-	        'D': './../assets/sounds/PIANO/D.wav',
-	        'E': './../assets/sounds/PIANO/E.wav',
-	        'F': './../assets/sounds/PIANO/F.wav',
-	        'G': './../assets/sounds/PIANO/G.wav',
-	        'A': './../assets/sounds/PIANO/A.wav',
-	        'B': './../assets/sounds/PIANO/B.wav'
-	};
-
-	exports.default = audio;
 
 /***/ }
 /******/ ]);
