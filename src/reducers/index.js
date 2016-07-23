@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { ADD_PIANO, REMOVE_PIANO, CHANGE_TYPE, CHANGE_COLOR, PLAY_SEQUENCE, ADD_TO_PLAYED_KEYS, addPiano, removePiano } from '../actions/index.js';
+import { ADD_PIANO, REMOVE_PIANO, CHANGE_TYPE, CHANGE_COLOR, PLAY_SEQUENCE, ADD_TO_PLAYED_KEYS } from '../actions/index.js';
 import { generateNewPiano, findPianoIndex, colorChangeUtil, sequencePlayUtil } from './utils.js';
 
 let pianoId = 0;

@@ -21606,7 +21606,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	          value: true
 	});
 
 	var _react = __webpack_require__(2);
@@ -21616,60 +21616,56 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Nav = function Nav(_ref) {
-	  var addPiano = _ref.addPiano;
-	  var removePiano = _ref.removePiano;
-	  var changeType = _ref.changeType;
-	  var newPianoType = _ref.newPianoType;
+	          var addPiano = _ref.addPiano;
+	          var removePiano = _ref.removePiano;
+	          var changeType = _ref.changeType;
+	          var newPianoType = _ref.newPianoType;
 
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'button',
-	      { onClick: function onClick() {
-	          addPiano(newPianoType);
-	        } },
-	      'add piano'
-	    ),
-	    _react2.default.createElement(
-	      'button',
-	      { onClick: function onClick() {
-	          removePiano();
-	        } },
-	      'remove piano'
-	    ),
-	    _react2.default.createElement(
-	      'ul',
-	      { className: 'dropdown-menu' },
-	      _react2.default.createElement(
-	        'li',
-	        { onClick: function onClick() {
-	            changeType('necktieMode');
-	          } },
-	        'NeckTie'
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        { onClick: function onClick() {
-	            changeType('pianoMode');
-	          } },
-	        'Piano'
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        { onClick: function onClick() {
-	            changeType('sillyMode');
-	          } },
-	        'Mugatu\'s Silly Mode'
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      'Current Type:',
-	      newPianoType
-	    )
-	  );
+	          return _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                              'button',
+	                              { onClick: function onClick() {
+	                                                  addPiano(newPianoType);
+	                                        } },
+	                              'add piano'
+	                    ),
+	                    _react2.default.createElement(
+	                              'button',
+	                              { onClick: function onClick() {
+	                                                  removePiano();
+	                                        } },
+	                              'remove piano'
+	                    ),
+	                    _react2.default.createElement(
+	                              'button',
+	                              { onClick: function onClick() {
+	                                                  changeType('necktieMode');
+	                                        } },
+	                              'NeckTie'
+	                    ),
+	                    _react2.default.createElement(
+	                              'button',
+	                              { onClick: function onClick() {
+	                                                  changeType('pianoMode');
+	                                        } },
+	                              'Piano'
+	                    ),
+	                    _react2.default.createElement(
+	                              'button',
+	                              { onClick: function onClick() {
+	                                                  changeType('sillyMode');
+	                                        } },
+	                              'Mugatu\'s Silly Mode'
+	                    ),
+	                    _react2.default.createElement(
+	                              'div',
+	                              null,
+	                              'Current Type:',
+	                              newPianoType
+	                    )
+	          );
 	};
 
 	exports.default = Nav;
