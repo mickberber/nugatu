@@ -6,9 +6,11 @@ import Input from './Input';
 const Piano = ({ piano, changeColor, playSequence, addToPlayedKeys }) => {
   return (<div>
             <div>{piano.type}</div>
-            <Keys piano={piano} changeColor={changeColor} addToPlayedKeys={addToPlayedKeys} />
-            <img src={piano.img} />
-            <div>Played Keys:{piano.playedKeys}</div>
+            <div className='piano'>
+              <Keys piano={piano} changeColor={changeColor} addToPlayedKeys={addToPlayedKeys} />
+              <img src={piano.img} style={{height: '400px', width: '750px', float: 'right'}} />
+              <div>Played Keys:{piano.playedKeys}</div>
+            </div>
           </div>)
 }
 

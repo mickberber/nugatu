@@ -11,3 +11,5 @@ const WhiteKey = ({ letter, color }) => {
             </div>
         )
 }
+
+export default WhiteKey;

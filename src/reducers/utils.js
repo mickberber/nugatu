@@ -56,7 +56,7 @@ const necktiePiano = {
 }
 
 const sillyPiano = {
-  img: './../assets/pknecktie5.png',
+  img: './../assets/mugatu-o.gif',
   type: 'sillyMode',
   audio: 'sillyAudio',
   playedKeys: [],
@@ -71,7 +71,7 @@ const sillyPiano = {
 }
 
 const pianoPiano = {
-  img: './../assets/pknecktie5.png',
+  img: './../assets/piano.jpg',
   type: 'pianoMode',
   audio: 'pianoAudio',
   playedKeys: [],
